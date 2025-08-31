@@ -7,6 +7,7 @@ const PostList= createContext({
   deletePost: () => {},
 });
 
+
 const postListReducer = (currPostList, action) =>{
   return currPostList;
 }
