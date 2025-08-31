@@ -1,32 +1,16 @@
+import Post from "./Post" 
+import { useContext } from "react";
+import { PostList as postListData } from "../store/postliststore";
+
 const Postlist = () => {
+ const {postList} =  useContext(postListData);
+ console.log(postList);
   return(
-    <div >
-    <div className="card" style={{width: "18rem"}}>
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card’s content.
-        </p>
-        <a href="#" className="btn btn-primary">
-          Go somewhere
-        </a>
-      </div>
-    </div>
-    <div className="card" style={{width: "18rem"}}>
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card’s content.
-        </p>
-        <a href="#" className="btn btn-primary">
-          Go somewhere
-        </a>
-      </div>
-    </div>
-    </div>
-    
+    <>
+    {postList.map((post) => (
+    <Post key={post.id} post={post}/>
+    ))}
+    </>
   );
 };
 export default Postlist;

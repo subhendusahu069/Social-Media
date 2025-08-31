@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 import CreatePost from "./components/CreatePost";
 import  Postlist from "./components/Postlist";
 import { useState } from "react";
-// import PostListProvider from "./store/post-list-store";
+import PostListProvider from "./store/postliststore";
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-    {/* <PostListProvider> */}
+    <PostListProvider> 
       <div className="app-container">
         <Sidebar selectedTab={selectedTab} setSelectedTab={setSelectedTab}></Sidebar>
         <div className="content">
@@ -25,7 +25,7 @@ function App() {
           <Footer></Footer>
         </div>
       </div>
-      {/* </PostListProvider> */}
+      </PostListProvider> 
     </>
   );
 }
