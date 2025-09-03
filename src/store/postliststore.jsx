@@ -8,7 +8,15 @@ export const PostList = createContext({
 });
 
 const postListReducer = (currPostList, action) => {
-  return currPostList;
+   
+  let newPostList = currPostList;
+  if (action.type === "DELETE_POST"){
+     newPostList = newPostList.filter((post) => post.id !== action.payload);
+    }
+    else if (action.type === "ADD_POST"){
+       newPostList = [action.payload, ...newPostList];      
+    }
+  return newPostList;
 };
 
 const PostListProvider = ({ children }) => {
@@ -17,8 +25,30 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POSTLIST
   );
 
-  const addPost = () => {};
-  const deletePost = (postid) => { console.log(`delete the post id: ${postid} `)};
+  const addPost = (postData) => {
+    dispatchPostList(
+      { type: "ADD_POST", 
+        payload: { 
+          id: Math.random().toString(), // Generate a random ID for the new post
+          ...postData,
+          // title: postData.title,
+          // body: postData.body,
+          // reactions: postData.reactions,
+          // userId: postData.userId,
+          // tags: postData.tags,
+          
+        } 
+      }
+    );
+  };
+  const deletePost = (postid) => {
+    dispatchPostList(
+      { type: "DELETE_POST", 
+        payload: postid}
+      );
+    };
+
+
   const modifiyPost = () => {};
   return (
     <PostList.Provider value={{ postList, addPost, deletePost, modifiyPost }}>
