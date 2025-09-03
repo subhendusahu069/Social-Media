@@ -18,7 +18,7 @@ const PostListProvider = ({ children }) => {
   );
 
   const addPost = () => {};
-  const deletePost = () => {};
+  const deletePost = (postid) => { console.log(`delete the post id: ${postid} `)};
   const modifiyPost = () => {};
   return (
     <PostList.Provider value={{ postList, addPost, deletePost, modifiyPost }}>
