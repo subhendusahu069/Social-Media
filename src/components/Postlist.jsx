@@ -5,7 +5,9 @@ import WelcomeMessage from "./WelcomeMessage";
 
 const Postlist = () => {
   const { postList, addInitalPost } = useContext(postListData);
-  const postArray = Array.isArray(postList) ? postList : Object.values(postList);
+  const postArray = Array.isArray(postList)
+    ? postList
+    : Object.values(postList);
   const handleGetPostClick = () => {
     fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
@@ -21,7 +23,7 @@ const Postlist = () => {
       )}
 
       {postArray.map((post) => (
-        <Post key ={post.id} post={post} />
+        <Post key={post.id} post={post} />
       ))}
     </>
   );

@@ -25,7 +25,7 @@ const CreatePost = () => {
     postBodyElement.current.value = "";
     reactionsElement.current.value = "";
     tagsElement.current.value = "";
-    
+
     addPost(postData);
   };
   return (
@@ -58,7 +58,7 @@ const CreatePost = () => {
         <label htmlFor="body" className="form-label">
           Post Context
         </label>
-        <textarea 
+        <textarea
           type="textarea"
           className="form-control"
           id="body"
