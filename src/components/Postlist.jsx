@@ -14,20 +14,30 @@ const Postlist = () => {
     : Object.values(postList);
 
   const controller = new AbortController();
-  const signal = controller.signal;
-  
+
+  // const signal = controller.signal;
+
+  // useEffect(() => {
+  //   setFatch(true);
+  //   fetch("https://dummyjson.com/posts",{ signal })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       addInitalPost(data.posts);
+  //       setFatch(false);
+  //     });
+  //   return () => controller.abort();
+
+  // }, []);
+
   useEffect(() => {
     setFatch(true);
-    fetch("https://dummyjson.com/posts",{ signal })
+    fetch("https://dummyjson.com/posts")
       .then((res) => res.json())
       .then((data) => {
         addInitalPost(data.posts);
         setFatch(false);
       });
-    return () => controller.abort();
-    
   }, []);
-  
 
   // if (!dataFatch) {
   //   fetch("https://dummyjson.com/posts")
@@ -51,9 +61,7 @@ const Postlist = () => {
       {fatch && <LoadingSpinner />}
       {!fatch && postList.length === 0 && <WelcomeMessage />}
 
-      {!fatch && postArray.map((post) => (
-        <Post key={post.id} post={post} />
-      ))}
+      {!fatch && postArray.map((post) => <Post key={post.id} post={post} />)}
     </>
   );
 };
