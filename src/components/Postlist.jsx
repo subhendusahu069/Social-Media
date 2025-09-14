@@ -27,6 +27,7 @@ const Postlist = () => {
     return () => controller.abort();
     
   }, []);
+  
 
   // if (!dataFatch) {
   //   fetch("https://dummyjson.com/posts")
