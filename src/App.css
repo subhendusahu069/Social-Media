@@ -1,30 +1,32 @@
-.app-container
-{
+.app-container {
   display: flex;
-  
 }
-.content{
+.content {
   width: 100%;
 }
-.sidebar{
+.sidebar {
   min-height: 780px;
 }
-.post-card{
+.post-card {
   margin: 20px 50px;
 }
-.hastag{
+.hastag {
   margin: 0px 5px;
 }
-.reaction{
-  margin-top: 15px 0 0 0 ;
+.reaction {
+  margin-top: 15px 0 0 0;
 }
-.create-post-form{
+.create-post-form {
   width: 50;
   margin: 20px 50px;
 }
 .cursor-pointer {
-      cursor: pointer;
-    }
-    .welcome-massage{
-      margin: 10px;
-    }
+  cursor: pointer;
+}
+.welcome-massage {
+  margin: 10px;
+}
+.loader{
+ 
+  margin-top: 100px;
+}
