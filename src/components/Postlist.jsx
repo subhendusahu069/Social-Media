@@ -1,19 +1,19 @@
 import Post from "./Post";
 // import { useContext, useState } from "react";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { PostList as postListData } from "../store/postliststore";
 import WelcomeMessage from "./WelcomeMessage";
 import LoadingSpinner from "./LoadingSpinner";
 
 const Postlist = () => {
-  const { postList, addInitalPost } = useContext(postListData);
+  const { postList, fatch } = useContext(postListData);
   // const [dataFatch, setDataFatch] = useState(false);
-  const [fatch, setFatch] = useState(false);
+  //const [fatch, setFatch] = useState(false);
   const postArray = Array.isArray(postList)
     ? postList
     : Object.values(postList);
 
-  const controller = new AbortController();
+  //const controller = new AbortController();
 
   // const signal = controller.signal;
 
@@ -29,15 +29,15 @@ const Postlist = () => {
 
   // }, []);
 
-  useEffect(() => {
-    setFatch(true);
-    fetch("https://dummyjson.com/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        addInitalPost(data.posts);
-        setFatch(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   setFatch(true);
+  //   fetch("https://dummyjson.com/posts")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       addInitalPost(data.posts);
+  //       setFatch(false);
+  //     });
+  // }, []);
 
   // if (!dataFatch) {
   //   fetch("https://dummyjson.com/posts")

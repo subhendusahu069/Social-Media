@@ -16,17 +16,46 @@ const CreatePost = () => {
       userId: userIDElement.current.value,
       title: postTitleElement.current.value,
       body: postBodyElement.current.value,
-      reactions: reactionsElement.current.value,
+      reactions: [
+        "likes:" +
+          reactionsElement.current.value.split(",").map((tag) => tag.trim())[0],
+        "dislikes:" +
+          reactionsElement.current.value.split(",").map((tag) => tag.trim())[1],
+      ],
       tags: tagsElement.current.value.split(",").map((tag) => tag.trim()), // Split by comma and trim spaces
     };
 
-    userIDElement.current.value = "";
-    postTitleElement.current.value = "";
-    postBodyElement.current.value = "";
-    reactionsElement.current.value = "";
-    tagsElement.current.value = "";
+    // userIDElement.current.value = "";
+    // postTitleElement.current.value = "";
+    // postBodyElement.current.value = "";
+    // reactionsElement.current.value = "";
+    // tagsElement.current.value = "";
 
-    addPost(postData);
+    fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: userIDElement.current.value,
+        title: postTitleElement.current.value,
+        body: postBodyElement.current.value,
+
+        reactions: {
+          likes: reactionsElement.current.value
+            .split(",")
+            .map((like) => like.trim())[0],
+          dislikes: reactionsElement.current.value
+            .split(",")
+            .map((dislikes) => dislikes.trim())[1],
+        },
+        tags: tagsElement.current.value.split(",").map((item) => item.trim()),
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        addPost(data);
+      });
+
+    //addPost(postData);
   };
   return (
     <form className="create-post-form" onSubmit={handleSubmit}>
